@@ -1,0 +1,20 @@
+PARKMONITORAI
+
+Napady:
+	frontend:
+	-display stavu parkoviska,
+	-admin page na zadanie camera feedu a oznacenie parkovacich miest
+		-ako zobrat a spracovat camera feed ??
+		-ako zaznacit do camera feedu/snimky parkovacie miesta ??
+		-po nejakom case treba zaznacit do vsetkych x snimok obsadene/neobsadene miesta a zaslat na ucenie
+			-zasielat pravidelne snimky na be kvoli uceniu
+	backend:
+	-prijimat snimky, usporiadat, spracovat
+	-zaslat poziadavku na vytrenovanie siete ??
+	-nasadit vytrenovany model
+	-zasielat info o obsadenosti (matica??)
+
+
+zdroje:
+
+	branie screenshotov z videa na fe: https://serversideup.net/capturing-an-image-from-an-html5-canvas-or-video-element/
