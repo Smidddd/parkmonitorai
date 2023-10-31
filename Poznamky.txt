@@ -1,5 +1,10 @@
 PARKMONITORAI
 
+Poznamky:
+jeden model
+vymysliet input kamier na frontend(ftp?,link?,ssh?)
+gwt - canvas transformacie, vykreslovanie
+
 Napady:
 	frontend:
 	-display stavu parkoviska,
@@ -13,8 +18,15 @@ Napady:
 	-zaslat poziadavku na vytrenovanie siete ??
 	-nasadit vytrenovany model
 	-zasielat info o obsadenosti (matica??)
-
+	
+	db:
+	
 
 zdroje:
 
 	branie screenshotov z videa na fe: https://serversideup.net/capturing-an-image-from-an-html5-canvas-or-video-element/
+
+
+
+Praca:
+	1.backend, spracovanie obrazkov, zatial bez ai, + databaza
