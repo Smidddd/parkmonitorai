@@ -2,7 +2,6 @@ package sk.umb.parkmonitorai.backend.camera.persistence.repository;
 
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
-import sk.umb.parkmonitorai.backend.area.persistence.entity.AreaEntity;
 import sk.umb.parkmonitorai.backend.camera.persistence.entity.CameraEntity;
 
 import java.util.List;

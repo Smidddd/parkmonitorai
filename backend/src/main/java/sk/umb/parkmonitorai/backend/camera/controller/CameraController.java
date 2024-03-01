@@ -1,9 +1,6 @@
 package sk.umb.parkmonitorai.backend.camera.controller;
 
 import org.springframework.web.bind.annotation.*;
-import sk.umb.parkmonitorai.backend.area.service.AreaDetailDTO;
-import sk.umb.parkmonitorai.backend.area.service.AreaRequestDTO;
-import sk.umb.parkmonitorai.backend.area.service.AreaService;
 import sk.umb.parkmonitorai.backend.camera.service.CameraDetailDTO;
 import sk.umb.parkmonitorai.backend.camera.service.CameraRequestDTO;
 import sk.umb.parkmonitorai.backend.camera.service.CameraService;

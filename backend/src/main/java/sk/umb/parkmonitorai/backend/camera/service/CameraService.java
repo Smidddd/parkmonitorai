@@ -1,13 +1,9 @@
 package sk.umb.parkmonitorai.backend.camera.service;
 
 import org.apache.logging.log4j.util.Strings;
-import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.stereotype.Service;
 import sk.umb.parkmonitorai.backend.camera.persistence.entity.CameraEntity;
 import sk.umb.parkmonitorai.backend.camera.persistence.repository.CameraRepository;
-import sk.umb.parkmonitorai.backend.user.persistence.entity.UserEntity;
-import sk.umb.parkmonitorai.backend.user.service.UserDetailDTO;
-import sk.umb.parkmonitorai.backend.user.service.UserRequestDTO;
 
 import java.util.ArrayList;
 import java.util.List;
