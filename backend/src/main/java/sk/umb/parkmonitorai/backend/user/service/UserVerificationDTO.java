@@ -1,15 +1,15 @@
 package sk.umb.parkmonitorai.backend.user.service;
 
 public class UserVerificationDTO {
-    private Long userId;
+    private String userEmail;
     private String userPassword;
 
-    public Long getUserId() {
-        return userId;
+    public String getUserEmail() {
+        return userEmail;
     }
 
-    public void setUserId(Long userId) {
-        this.userId = userId;
+    public void setUserEmail(String userEmail) {
+        this.userEmail = userEmail;
     }
 
     public String getUserPassword() {

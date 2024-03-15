@@ -32,10 +32,10 @@ public class UserController {
         return userService.getUserByEmail(userEmail);
     }
     //TODO: Also implement helper object in front-end
-    @GetMapping("/api/users/verify")
+    @PostMapping("/api/users/verify")
     public boolean verifyPassword(@RequestBody UserVerificationDTO userVerificationDTO){
         System.out.println("Verify password called.");
-        return userService.verifyHash(userVerificationDTO.getUserPassword(), userVerificationDTO.getUserId());
+        return userService.verifyHash(userVerificationDTO.getUserPassword(), userVerificationDTO.getUserEmail());
     }
     @PostMapping("/api/users")
     public Long createUser(@RequestBody UserRequestDTO userRequestDTO){

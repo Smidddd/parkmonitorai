@@ -54,10 +54,16 @@ public class UserService {
 
         return ue;
     }
-    public boolean verifyHash(String password, Long id) {
-        String hash = userRepository.findById(id).get().getPassword();
-        System.out.println(BCrypt.checkpw(password, hash));
-        return BCrypt.checkpw(password, hash);
+    public boolean verifyHash(String password, String email) {
+        try {
+            String hash = userRepository.findByEmail(email).getPassword();
+            System.out.println(BCrypt.checkpw(password, hash));
+            return BCrypt.checkpw(password, hash);
+        }
+        catch (Exception e){
+            System.out.println("Email does not exist");
+            return false;
+        }
     }
 
     public boolean checkEmail(String customerEmail) {
