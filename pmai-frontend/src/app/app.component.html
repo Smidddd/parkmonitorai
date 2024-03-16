@@ -1,14 +1,18 @@
-<nav class="top-navbar">
-  <button mat-button color="warn" (click)="openOffCan(content)">
-    PMAI
-  </button>
-	<button *ngIf="getSessionRole() == null" mat-raised-button (click)="openLogin()">
-		Login
-	</button>
-  <button *ngIf="getSessionRole() != null" mat-raised-button (click)="logout()">
-		Logout
-	</button>
-</nav>
+  <nav class="top-navbar">
+    <button mat-button color="warn" (click)="openOffCan(content)">
+      PMAI
+    </button>
+    <button *ngIf="getSessionRole() == null" mat-raised-button (click)="openLogin()">
+      Login
+    </button>
+    <button *ngIf="getSessionRole() == 'ADMIN'" mat-raised-button (click)="navigateConfig()">
+      Configure
+    </button>
+    <button *ngIf="getSessionRole() != null" mat-raised-button (click)="logout()">
+      Logout
+    </button>
+  </nav>
+
 <!--Offcanvas for area and camera selection-->
 <ng-template #content let-offcanvas>
 	<div class="offcanvas-header">
@@ -17,18 +21,18 @@
 	</div>
 	<div class="offcanvas-body">
     <!--Implement ngFor to take areas and associated cameras from DB-->
-    <div ngbAccordion #accordion="ngbAccordion">
-      <div ngbAccordionItem="first">
-        <h2 ngbAccordionHeader class="ngbHeader">
-          <button ngbAccordionButton>Sásová</button>
+    <div *ngFor="let area of areas" ngbAccordion #accordion="ngbAccordion">
+      <div ngbAccordionItem="{{ area.name }}">
+        <h2 ngbAccordionHeader  class="ngbHeader">
+          <button ngbAccordionButton>{{ area.name }}</button>
         </h2>
         <div ngbAccordionCollapse>
           <div ngbAccordionBody>
-            <ng-template>
-              <button mat-button>
-                Severná Cam1
+            <div *ngFor="let camera of cameras">
+              <button *ngIf="camera.areaId.id == area.id" mat-button>
+                {{ camera.name }}
               </button>
-            </ng-template>
+            </div>
           </div>
         </div>
       </div>

@@ -11,12 +11,14 @@ import { NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NgbdModalContent } from './app.component';
 import {HttpClientModule} from "@angular/common/http";
+import { CameraConfigPageComponent } from './camera-config-page/camera-config-page.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomePageComponent,
-    NgbdModalContent
+    NgbdModalContent,
+    CameraConfigPageComponent
   ],
   imports: [
     BrowserModule,
