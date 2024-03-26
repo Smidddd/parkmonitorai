@@ -1,0 +1,22 @@
+.host {
+    margin-top: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.child {
+    display: flex;
+}
+
+.example-form {
+    display: flex;
+    flex-direction: column;
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+  }
+  
+  .example-full-width {
+    width: 100%;
+  }

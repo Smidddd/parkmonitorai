@@ -2,7 +2,6 @@ package sk.umb.parkmonitorai.backend.parklot.service;
 
 import sk.umb.parkmonitorai.backend.camera.persistence.entity.CameraEntity;
 
-import java.awt.Point;
 import java.util.List;
 
 

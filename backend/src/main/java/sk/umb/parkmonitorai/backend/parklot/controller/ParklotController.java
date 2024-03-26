@@ -25,9 +25,9 @@ public class ParklotController {
         return parklotService.getParklotById(parklotId);
     }
     @PostMapping("/api/parklots")
-    public Long createParklot(@RequestBody ParklotRequestDTO parklotRequestDTO){
+    public int createParklots(@RequestBody ParklotRequestDTO[] parklotRequestDTOS){
         System.out.println("Create parklot called.");
-        return parklotService.createParklot(parklotRequestDTO);
+        return parklotService.createParklots(parklotRequestDTOS);
     }
     @PutMapping("/api/parklots/{parklotId}")
     public void updateParklot(@PathVariable Long parklotId, @RequestBody ParklotRequestDTO parklotRequestDTO){

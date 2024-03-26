@@ -2,8 +2,8 @@ package sk.umb.parkmonitorai.backend.parklot.persistence.entity;
 
 import jakarta.persistence.*;
 import sk.umb.parkmonitorai.backend.camera.persistence.entity.CameraEntity;
+import sk.umb.parkmonitorai.backend.parklot.service.Point;
 
-import java.awt.Point;
 import java.util.List;
 
 @Entity
@@ -11,6 +11,7 @@ public class ParklotEntity {
     @Id
     @GeneratedValue
     private Long id;
+    //TODO: Vlastny point implementovat
     @ElementCollection
     private List<Point> geometry;
     private Float latitude;

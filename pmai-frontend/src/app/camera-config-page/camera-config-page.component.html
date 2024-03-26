@@ -1,1 +1,70 @@
-<p>camera-config-page works!</p>
+<ng-template #successTpl> Camera configuration was completed successfully! </ng-template>
+
+<div class="host" *ngIf="getSessionCameraId() == null">
+	<div class="child">
+		<h1>Camera Configuration</h1>
+	</div>
+	<form [formGroup]="formCamera" (submit)="saveCamera()" class="example-form">
+		<mat-form-field class="example-full-width">
+			<mat-label>Name</mat-label>
+			<input matInput formControlName="name">
+		</mat-form-field>
+
+		<mat-form-field class="example-full-width">
+			<mat-label>Latitude</mat-label>
+			<input matInput formControlName="lattitude">
+		</mat-form-field>
+
+		<mat-form-field class="example-full-width">
+			<mat-label>Longitude</mat-label>
+			<input matInput formControlName="longitude">
+		</mat-form-field>
+
+        <mat-form-field class="example-full-width">
+			<mat-label>Source</mat-label>
+			<input matInput formControlName="source">
+		</mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Area</mat-label>
+            <mat-select formControlName="areaId">
+                <mat-option *ngFor="let area of areas" [value]="area">{{area.name}}</mat-option>
+              </mat-select>
+        </mat-form-field>
+
+        <button mat-raised-button type="submit">
+            Save
+        </button>
+	</form>
+</div>
+<div class="host" *ngIf="getSessionCameraId() != null">
+    <h1>Draw the parking spaces</h1>
+    <p>After setting 4 points inside the image a parking space is created</p>
+    <p>Refreshing the page deletes all parking spaces you drew</p>
+    <p>Drawn spaces can be deleted in the section under the image</p>
+    <p>After you finish press the "Submit" button</p>
+    <canvas #canvas style="width: 1024px; height: 576px;"></canvas>
+    
+<form class="add-lessons-form" [formGroup]="formParklots" (submit)="saveParklots()">
+    <ng-container formArrayName="parklotsArray">
+        <ng-container *ngFor="let parklotsForm of items.controls; let i = index">
+            <div class="lesson-form-row" [formGroup]="getFormGroup(parklotsForm)">
+                <label>{{ i+1 }}</label>
+                <mat-form-field appearance="fill">
+                    <input matInput
+                           formControlName="latitude"
+                           placeholder="Latitude">
+                </mat-form-field>
+                <mat-form-field appearance="fill">
+                    <input matInput
+                           formControlName="longitude"
+                           placeholder="Longitude">
+                </mat-form-field>
+                <button mat-raised-button class="delete-btn" (click)="removeParklot(i)">
+                    Delete</button>
+            </div>
+        </ng-container>
+        <button mat-raised-button type="submit">Submit</button>
+    </ng-container>
+</form>     
+</div>

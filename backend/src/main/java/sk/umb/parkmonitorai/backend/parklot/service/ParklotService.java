@@ -65,6 +65,12 @@ public class ParklotService {
     public Long createParklot(ParklotRequestDTO parklotRequestDTO){
         return parklotRepository.save(mapToEntity(parklotRequestDTO)).getId();
     }
+    public int createParklots(ParklotRequestDTO[] parklotRequestDTOS){
+        for (int i=0; i<parklotRequestDTOS.length; i++){
+            parklotRepository.save(mapToEntity(parklotRequestDTOS[i]));
+        }
+        return parklotRequestDTOS.length;
+    }
 
     public void updateParklot(Long parklotId, ParklotRequestDTO parklotRequestDTO) {
         ParklotEntity parklotEntity = parklotRepository.findById(parklotId).get();

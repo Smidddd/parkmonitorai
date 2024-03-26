@@ -15,8 +15,8 @@ export class CameraService {
     return this.http.get<Camera[]>(this.url);
   }
 
-  getCamera(userId: number): Observable<Camera> {
-    return this.http.get<Camera>(`${this.url}/${userId}`);
+  getCamera(cameraId: number): Observable<Camera> {
+    return this.http.get<Camera>(`${this.url}/${cameraId}`);
   }
 
   createCamera(camera: Camera): Observable<number> {

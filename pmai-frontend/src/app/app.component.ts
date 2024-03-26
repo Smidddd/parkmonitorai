@@ -1,4 +1,4 @@
-import { Component, inject, TemplateRef, ViewEncapsulation } from '@angular/core';
+import { Component, inject, OnDestroy, TemplateRef, ViewEncapsulation } from '@angular/core';
 import { NgbOffcanvas } from '@ng-bootstrap/ng-bootstrap';
 import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { UserService } from './common/service/user.service';
@@ -10,6 +10,7 @@ import { Camera } from './common/model/camera.model';
 import { CameraService } from './common/service/camera.service';
 import { Area } from './common/model/area.model';
 import { AreaService } from './common/service/area.service';
+import { ToastService } from './common/service/toast.service';
 
 
 @Component({
@@ -19,9 +20,7 @@ import { AreaService } from './common/service/area.service';
   encapsulation: ViewEncapsulation.None,
 })
 
-export class AppComponent {
-  title = 'Park Monitor AI';
-
+export class AppComponent{
   //Areas offcanvas
   private offcanvasService = inject(NgbOffcanvas);
 
@@ -46,11 +45,10 @@ export class AppComponent {
   }
 
   logout() {
-    sessionStorage.removeItem("role");
+    sessionStorage.clear();
     this.router.navigate([""]);
   }
   //Area and camera logic
-  //IMPLEMENT CACHING OF DATA BELOW, TOO MANY API CALLS!!!
   cameras?: Camera[];
   areas?: Area[];
 
