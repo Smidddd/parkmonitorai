@@ -4,15 +4,17 @@ import org.apache.logging.log4j.util.Strings;
 import org.springframework.stereotype.Service;
 import sk.umb.parkmonitorai.backend.camera.persistence.entity.CameraEntity;
 import sk.umb.parkmonitorai.backend.camera.persistence.repository.CameraRepository;
+import sk.umb.parkmonitorai.backend.parklot.persistence.repository.ParklotRepository;
 
 import java.util.ArrayList;
 import java.util.List;
 @Service
 public class CameraService {
     private final CameraRepository cameraRepository;
-
-    public CameraService(CameraRepository cameraRepository){
+    private final ParklotRepository parklotRepository;
+    public CameraService(CameraRepository cameraRepository, ParklotRepository parklotRepository){
         this.cameraRepository = cameraRepository;
+        this.parklotRepository = parklotRepository;
     }
 
     private List<CameraDetailDTO> mapToDto(List<CameraEntity> cameraEntities) {
@@ -99,6 +101,7 @@ public class CameraService {
     }
 
     public void deleteCamera(Long cameraId){
+        parklotRepository.deleteAllByCameraId(cameraRepository.findById(cameraId).get());
         cameraRepository.deleteById(cameraId);
     }
 }

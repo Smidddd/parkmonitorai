@@ -24,6 +24,16 @@ public class ParklotController {
         System.out.println("Get parklot by ID called.");
         return parklotService.getParklotById(parklotId);
     }
+    @PostMapping("/api/parklots/start/{cameraId}")
+    public int startCutting(@PathVariable Long cameraId){
+        System.out.println("Start cutting images for cameraId: "+cameraId+" called.");
+        return parklotService.startTask(cameraId);
+    }
+    @PostMapping("/api/parklots/stop/{cameraId}")
+    public int stopCutting(@PathVariable Long cameraId){
+        System.out.println("Stop cutting images for cameraId: "+cameraId+" called.");
+        return parklotService.stopTask(cameraId);
+    }
     @PostMapping("/api/parklots")
     public int createParklots(@RequestBody ParklotRequestDTO[] parklotRequestDTOS){
         System.out.println("Create parklot called.");

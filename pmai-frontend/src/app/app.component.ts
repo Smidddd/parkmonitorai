@@ -61,7 +61,15 @@ export class AppComponent{
     });
 
   }
+
+  navigateView(cameraId: Number){
+    location.href = 'view/'+cameraId;
+  }
 }
+
+
+
+
 
 @Component({
   selector: 'ngbd-modal-content',

@@ -11,12 +11,11 @@ public class ParklotEntity {
     @Id
     @GeneratedValue
     private Long id;
-    //TODO: Vlastny point implementovat
-    @ElementCollection
+    @ElementCollection(fetch = FetchType.EAGER)
     private List<Point> geometry;
     private Float latitude;
     private Float longitude;
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinTable(name = "parklot-camera",
             joinColumns = @JoinColumn(name = "camera_id"),
             inverseJoinColumns = @JoinColumn(name = "parklot_id"))

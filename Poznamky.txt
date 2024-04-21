@@ -30,3 +30,14 @@ zdroje:
 
 Praca:
 	1.backend, spracovanie obrazkov, zatial bez ai, + databaza
+
+
+edit page
+
+zobrazenie stavu page
+
+extra "cache" tabulka so stavom parkoviska update kazdych 5 min od posledneho zapisu.
+id parklot, stav, 
+
+siet:
+

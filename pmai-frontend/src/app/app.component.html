@@ -29,7 +29,7 @@
         <div ngbAccordionCollapse>
           <div ngbAccordionBody>
             <div *ngFor="let camera of cameras">
-              <button *ngIf="camera.areaId.id == area.id" mat-button>
+              <button (click)="navigateView(camera.id)" *ngIf="camera.areaId.id == area.id" mat-button>
                 {{ camera.name }}
               </button>
             </div>

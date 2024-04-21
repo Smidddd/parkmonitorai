@@ -1,0 +1,7 @@
+uvod
+analyza - existujuce parkovacie systemy + ich zhrnutie (vyvodit poziadavky na system)
+navrh - konkretnejsi, struktura db, struktura systemu (klient-server, rozpoznavacia cast), nie uplne konkretne, navrh designu frontend (figma), pouzivatelske role, use case diagramy
+implementacia - technicke detaily, vyuzite technologie (spring boot, angular...), popis endpointov, konkretna db schema
+testovanie/vyhodnotenie - screenshoty z aplikacie, rozne scenare
+
+

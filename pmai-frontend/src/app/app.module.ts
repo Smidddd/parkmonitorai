@@ -17,14 +17,16 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatInputModule} from '@angular/material/input';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import {MatCardModule} from '@angular/material/card'; 
-import {MatTableModule} from '@angular/material/table'; 
+import {MatTableModule} from '@angular/material/table';
+import { CameraViewPageComponent } from './camera-view-page/camera-view-page.component'; 
 
 @NgModule({
   declarations: [
     AppComponent,
     HomePageComponent,
     NgbdModalContent,
-    CameraConfigPageComponent
+    CameraConfigPageComponent,
+    CameraViewPageComponent
   ],
   imports: [
     BrowserModule,

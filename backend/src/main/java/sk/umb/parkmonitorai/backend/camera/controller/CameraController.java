@@ -20,22 +20,22 @@ public class CameraController {
         return cameraService.getAllCameras();
     }
     @GetMapping("/api/cameras/{cameraId}")
-    public CameraDetailDTO getAreaById(@PathVariable Long cameraId){
+    public CameraDetailDTO getCameraById(@PathVariable Long cameraId){
         System.out.println("Get camera by ID called.");
         return cameraService.getCameraById(cameraId);
     }
     @PostMapping("/api/cameras")
-    public Long createUser(@RequestBody CameraRequestDTO cameraRequestDTO){
+    public Long createCamera(@RequestBody CameraRequestDTO cameraRequestDTO){
         System.out.println("Create camera called.");
         return cameraService.createCamera(cameraRequestDTO);
     }
     @PutMapping("/api/cameras/{cameraId}")
-    public void updateUser(@PathVariable Long cameraId, @RequestBody CameraRequestDTO cameraRequestDTO){
+    public void updateCamera(@PathVariable Long cameraId, @RequestBody CameraRequestDTO cameraRequestDTO){
         System.out.println("Update camera called, cameraId: "+ cameraId);
         cameraService.updateCamera(cameraId, cameraRequestDTO);
     }
     @DeleteMapping("/api/cameras/{cameraId}")
-    public void deleteArea(@PathVariable Long cameraId){
+    public void deleteCamera(@PathVariable Long cameraId){
         cameraService.deleteCamera(cameraId);
     }
 }
