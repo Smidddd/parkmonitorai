@@ -19,6 +19,11 @@ public class ParklotController {
         System.out.println("Get all parklots called.");
         return parklotService.getAllParklots();
     }
+    @GetMapping("/api/parklots/camera/{cameraId}")
+    public List<ParklotDetailDTO> getAllParklotsForCamera(@PathVariable Long cameraId){
+        System.out.println("Get all parklots for cameraId: "+ cameraId +" called.");
+        return parklotService.getAllParklotsForCamera(cameraId);
+    }
     @GetMapping("/api/parklots/{parklotId}")
     public ParklotDetailDTO getParklotById(@PathVariable Long parklotId){
         System.out.println("Get parklot by ID called.");

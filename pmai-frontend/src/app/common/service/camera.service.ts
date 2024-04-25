@@ -22,4 +22,13 @@ export class CameraService {
   createCamera(camera: Camera): Observable<number> {
     return this.http.post<number>(this.url, camera);
   }
+
+  updateCamera(camera: Camera): Observable<Camera> {
+    return this.http.put<Camera>
+    (`${this.url}/${camera.id}`, camera);
+  }
+
+  deleteCamera(cameraId: number): Observable<void> {
+    return this.http.delete<void>(`${this.url}/${cameraId}`);
+  }
 }

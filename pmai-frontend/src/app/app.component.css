@@ -22,3 +22,12 @@ button {
 .ngbHeader {
     width: 89%;
 }
+
+.btnarea {
+    display: flex;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+}

@@ -29,9 +29,18 @@
         <div ngbAccordionCollapse>
           <div ngbAccordionBody>
             <div *ngFor="let camera of cameras">
-              <button (click)="navigateView(camera.id)" *ngIf="camera.areaId.id == area.id" mat-button>
-                {{ camera.name }}
-              </button>
+              <div class="btnarea" *ngIf="camera.areaId.id == area.id">
+                <button (click)="navigateView(camera.id)"  mat-button>
+                  {{ camera.name }}
+                </button>
+                <button (click)="openModal(camera.id)" *ngIf="areaContainsUser(area) && getSessionRole() == 'ADMIN'" mat-button color="accent">
+                  Edit
+                </button>
+              
+                <button (click)="deleteCamera(camera.id)" *ngIf="areaContainsUser(area) && getSessionRole() == 'ADMIN'" mat-icon-button color="warn">
+                  X
+                </button>
+              </div>
             </div>
           </div>
         </div>
@@ -39,6 +48,8 @@
     </div>
 	</div>
 </ng-template>
+
+
 
 
 

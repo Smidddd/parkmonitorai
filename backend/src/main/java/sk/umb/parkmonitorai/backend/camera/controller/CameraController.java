@@ -36,6 +36,7 @@ public class CameraController {
     }
     @DeleteMapping("/api/cameras/{cameraId}")
     public void deleteCamera(@PathVariable Long cameraId){
+        System.out.println("Delete camera: "+cameraId+" called.");
         cameraService.deleteCamera(cameraId);
     }
 }

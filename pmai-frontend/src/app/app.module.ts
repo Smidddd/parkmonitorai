@@ -19,6 +19,8 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import {MatCardModule} from '@angular/material/card'; 
 import {MatTableModule} from '@angular/material/table';
 import { CameraViewPageComponent } from './camera-view-page/camera-view-page.component'; 
+import {MatIconModule} from '@angular/material/icon';
+import {MatDialogModule} from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -42,7 +44,9 @@ import { CameraViewPageComponent } from './camera-view-page/camera-view-page.com
     MatInputModule,
     MatSlideToggleModule,
     MatCardModule,
-    MatTableModule
+    MatTableModule,
+    MatIconModule,
+    MatDialogModule
   ],
   providers: [
     {provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {appearance: 'fill'}}

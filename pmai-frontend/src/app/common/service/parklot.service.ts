@@ -12,6 +12,14 @@ export class ParklotService {
 
   constructor(private http: HttpClient) { }
 
+  getParklots(): Observable<Parklot[]> {
+    return this.http.get<Parklot[]>(this.url);
+  }
+
+  getParklotsForCamera(cameraId: Number): Observable<Parklot[]> {
+    return this.http.get<Parklot[]>(`${this.url}/camera/${cameraId}`)
+  }
+
   createParklots(parklots: Parklot[]): Observable<number> {
     return this.http.post<number>(this.url, parklots);
   }

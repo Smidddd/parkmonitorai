@@ -9,7 +9,7 @@ from PIL import Image
 from aiohttp import web
 
 camera_images = {}  # Dictionary to store image paths and update times per camera
-image_duration = 180  # Duration in seconds (3 minutes)
+image_duration = 30  # Duration in seconds (3 minutes)
 
 async def hello(request):
     return web.Response(text="Hello, world")

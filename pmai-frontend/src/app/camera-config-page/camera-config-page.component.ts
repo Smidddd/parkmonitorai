@@ -25,7 +25,7 @@ export class CameraConfigPageComponent implements AfterViewInit {
     private formBuilder: FormBuilder
     ) {
     //get all areas for selection when creating camera
-    this.areaService.getCameras().subscribe((areas: Area[]) => {
+    this.areaService.getAreas().subscribe((areas: Area[]) => {
       this.areas = areas;
     });
     //init camera form
@@ -45,14 +45,22 @@ export class CameraConfigPageComponent implements AfterViewInit {
         console.log("camera saved")
         this.loadImage();
       });
+      this.parklotService.getParklotsForCamera(cameraId).subscribe((parklots: Parklot[]) => {
+        this.parklots = parklots;
+        this.drawRectangles();
+        parklots.forEach(parklot => {
+          this.addItem();
+        });
+      })
     }
     //init parklot form
+
     this.formParklots = this.formBuilder.group({
       parklotsArray: this.formBuilder.array([])
     });
   }
   //parklot form array logic
-  parklots: Parklot[] = []
+  parklots!: Parklot[];
   formParklots!: FormGroup
 
   addItem() {
@@ -150,11 +158,71 @@ export class CameraConfigPageComponent implements AfterViewInit {
   private scaleFactorY = 1;
 
   ngAfterViewInit() {
-    // @ts-ignore
+    //@ts-ignore
     this.ctx = this.canvasRef.nativeElement.getContext('2d');
     this.canvasRef.nativeElement.addEventListener('click', this.handleCanvasClick.bind(this));
+    this.canvasRef.nativeElement.addEventListener('mousemove', this.handleMouseMove.bind(this));
   }
 
+  isPointInPolygon(point: Point, vertices: Point[]): boolean {
+    // Ensure to consider scale factors if your geometry points are stored unscaled
+    let isInside = false;
+    let minX = vertices[0].x, maxX = vertices[0].x;
+    let minY = vertices[0].y, maxY = vertices[0].y;
+    for (let i = 1; i < vertices.length; i++) {
+      let q = vertices[i];
+      minX = Math.min(q.x, minX);
+      maxX = Math.max(q.x, maxX);
+      minY = Math.min(q.y, minY);
+      maxY = Math.max(q.y, maxY);
+    }
+  
+    if (point.x < minX || point.x > maxX || point.y < minY || point.y > maxY) {
+      return false;
+    }
+  
+    let i, j;
+    for (i = 0, j = vertices.length - 1; i < vertices.length; j = i++) {
+      if ((vertices[i].y > point.y) != (vertices[j].y > point.y) &&
+          point.x < (vertices[j].x - vertices[i].x) * (point.y - vertices[i].y) / (vertices[j].y - vertices[i].y) + vertices[i].x) {
+        isInside = !isInside;
+      }
+    }
+  
+    return isInside;
+  }
+  
+  
+  handleMouseMove(event: MouseEvent) {
+    const rect = this.canvasRef.nativeElement.getBoundingClientRect();
+    const mouseX = (event.clientX - rect.left) * this.scaleFactorX; // Scale the mouse coordinates
+    const mouseY = (event.clientY - rect.top) * this.scaleFactorY;
+  
+    let hoverIndex = -1;
+    for (let i = 0; i < this.parklots.length; i++) {
+      if (this.isPointInPolygon({ x: mouseX, y: mouseY }, this.parklots[i].geometry)) {
+        hoverIndex = i + 1;
+        break;
+      }
+    }
+  
+    this.redrawCanvas(); // Redraw everything first
+    if (hoverIndex !== -1) {
+      this.ctx.fillStyle = 'blue';
+      this.ctx.font = '32px Arial'; // Changed the font size to be twice the original size
+      // Adjust text position closer to the cursor (10 pixels right and 10 pixels below the cursor)
+      this.ctx.fillText(`Parklot: ${hoverIndex}`, (mouseX) + 10, (mouseY) + 10);
+    }
+  }
+  
+  
+  redrawCanvas() {
+    this.ctx.clearRect(0, 0, this.canvasRef.nativeElement.width, this.canvasRef.nativeElement.height);
+    this.ctx.drawImage(this.img, 0, 0, this.img.width, this.img.height);
+    this.drawRectangles();
+  }
+  
+  
   loadImage() {
     this.img = new Image();
     this.img.src = this.camera.source;

@@ -11,11 +11,11 @@ export class AreaService {
 
   constructor(private http: HttpClient) { }
 
-  getCameras(): Observable<Area[]> {
+  getAreas(): Observable<Area[]> {
     return this.http.get<Area[]>(this.url);
   }
 
-  getCamera(areaId: number): Observable<Area> {
+  getArea(areaId: number): Observable<Area> {
     return this.http.get<Area>(`${this.url}/${areaId}`);
   }
 

@@ -79,6 +79,9 @@ public class ParklotService {
     public List<ParklotDetailDTO> getAllParklots(){
         return mapToDto(parklotRepository.findAll());
     }
+    public List<ParklotDetailDTO> getAllParklotsForCamera(Long cameraId){
+        return mapToDto(parklotRepository.findParklotsByCameraId(cameraRepository.findById(cameraId).get()));
+    }
 
     public ParklotDetailDTO getParklotById(Long cameraId){
         return mapToDto(parklotRepository.findById(cameraId).get());
