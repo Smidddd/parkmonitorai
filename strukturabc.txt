@@ -1,8 +1,0 @@
-uvod - 1 strana, obsirne popisat preco robime toto, 
-prehlad existujucich rieseni - existujuce parkovacie systemy + ich zhrnutie (vyvodit poziadavky na system)
-analyza - vychadza z prehladu, zhrnutie co ma aplikacia vediet robit atd..
-navrh - konkretnejsi, struktura db, struktura systemu (klient-server, rozpoznavacia cast), nie uplne konkretne, navrh designu frontend (figma), pouzivatelske role, use case diagramy
-implementacia - technicke detaily, vyuzite technologie (spring boot, angular...), popis endpointov, konkretna db schema
-testovanie/vyhodnotenie - screenshoty z aplikacie, rozne scenare
-zaver - 1 stran 
-
